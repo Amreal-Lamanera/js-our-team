@@ -13,12 +13,10 @@ ourTeam.push(getObject('WBarbara Ramosayne', 'Graphic Designer', 'barbara-ramos-
 // stampo in console le info
 ourTeam.forEach(consolePrint);
 
-/**********************************************************
-    Funzione che stampa in console un oggetto.
-**********************************************************/
-function consolePrint(element) {
-    console.log(`Nome e Cognome: ${element.name}, Ruolo: ${element.role}, Immagine ${element.img}`);
-}
+// recupero info dal dom
+const domContainer = document.querySelector('.container-lg')
+// stampo nel dom sotto forma di stringhe
+ourTeam.forEach(domStringPrint);
 
 /**********************************************************
     Funzione che crea un oggetto con i dati forniti e lo
@@ -31,4 +29,19 @@ function getObject(name, role, img) {
     obj.img = img;
 
     return obj;
+}
+
+/**********************************************************
+    Funzione che stampa in console un oggetto.
+**********************************************************/
+function consolePrint(element) {
+    console.log(`Nome e Cognome: ${element.name}, Ruolo: ${element.role}, Immagine ${element.img}`);
+}
+
+/**********************************************************
+    Funzione che stampa gli oggetti nel dom sotto
+    forma di stringhe.
+**********************************************************/
+function domStringPrint(element) {
+    domContainer.innerHTML += `<p>Nome e Cognome: ${element.name},</p> <p>Ruolo: ${element.role},</p> <p>Immagine: ${element.img}</p><hr>`;
 }
