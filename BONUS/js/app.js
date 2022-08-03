@@ -14,7 +14,7 @@ ourTeam.push(getObject('WBarbara Ramosayne', 'Graphic Designer', 'barbara-ramos-
 ourTeam.forEach(consolePrint);
 
 // recupero info dal dom
-const domContainer = document.querySelector('.container-lg')
+const domContainer = document.querySelector('.grid')
 // stampo nel dom sotto forma di stringhe
 ourTeam.forEach(domStringPrint);
 
@@ -43,5 +43,12 @@ function consolePrint(element) {
     forma di stringhe.
 **********************************************************/
 function domStringPrint(element) {
-    domContainer.innerHTML += `<p>Nome e Cognome: ${element.name},</p> <p>Ruolo: ${element.role},</p> <figure class="pb-5 mb-5 border-bottom"><img src="img/${element.img}" alt="${element.name} img"></figure>`;
+    const gridCol = document.createElement('div');
+    gridCol.className = 'grid-col';
+    gridCol.classList.add('bg-white')
+    const img = `<figure><img src="img/${element.img}" alt="${element.name} img"></figure>`;
+    const name = `<h3>${element.name}</h3>`
+    const role = `<p class="fst-italic">${element.role}</p>`
+    gridCol.innerHTML += img + name + role;
+    domContainer.append(gridCol);
 }
